@@ -1,30 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Column Resizer",
+  "name": "YouTube Column Customizer",
   "version": "1.0",
-  "description": "Customize YouTube video grid layout with adjustable column count",
-  "permissions": [
-    "storage",
-    "activeTab"
-  ],
-  "host_permissions": [
-    "https://www.youtube.com/*"
-  ],
+  "description": "Change YouTube homepage to show more (or fewer) columns per row.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
-      "js": ["content.js"],
-      "css": ["styles.css"],
-      "run_at": "document_end"
+      "js": ["content/contentScript.js"],
+      "run_at": "document_idle"
     }
-  ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "YouTube Column Resizer"
-  },
-  "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
-  }
+  ]
 }

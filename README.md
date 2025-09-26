@@ -1,94 +1,70 @@
-# YouTube Column Resizer
+# YouTube Column Customizer
 
-A Chrome extension that allows you to customize the number of video columns displayed on YouTube, making better use of your screen space.
+A Chrome extension that allows you to customize the number of video columns displayed on YouTube's homepage.
 
-## Features
+## 🎯 Features
 
-- 🎯 **Customizable Columns**: Set any number of columns from 1 to 10
-- ⚡ **Instant Application**: Changes apply immediately without page reload
-- 💾 **Persistent Settings**: Your preferences are saved and restored across sessions
-- 🎨 **Beautiful UI**: Modern popup interface with preset buttons
-- 🔄 **Dynamic Updates**: Automatically handles YouTube's dynamic content loading
+- **Adjustable Columns**: Set anywhere from 1 to 10 columns (default: 4)
+- **Beautiful UI**: Modern popup interface with gradient design and animations
+- **One-Click Presets**: Quick access to common column counts (2, 3, 4, 5, 6, 8)
+- **Keyboard Shortcuts**: Use +/- keys or number keys (1-9) for quick adjustments
+- **Instant Apply**: Changes take effect immediately when you click "Apply Changes"
+- **Persistent Settings**: Your preferences are saved using `chrome.storage.local`
 
-## Installation
+## 🚀 Installation
 
 1. Download or clone this repository
-2. Open Chrome and navigate to `chrome://extensions/`
-3. Enable "Developer mode" in the top right
+2. Open Chrome and go to `chrome://extensions/`
+3. Enable "Developer mode" (toggle in top-right)
 4. Click "Load unpacked" and select the extension folder
-5. The extension icon should appear in your Chrome toolbar
+5. Navigate to YouTube and start customizing!
 
-## Usage
+## 💡 How to Use
 
-1. Navigate to YouTube (any page with video grids)
-2. Click the extension icon in your Chrome toolbar
-3. Enter your desired number of columns (1-10) or use preset buttons
-4. Click "Apply" - changes take effect immediately
-5. Your setting will persist across page reloads and browser restarts
+1. Click the extension icon in your Chrome toolbar
+2. Use the **+/-** buttons or click preset numbers to adjust columns
+3. Click **"Apply Changes"** to update YouTube
+4. Your settings are automatically saved and restored on page loads
 
-## How It Works
+## ⌨️ Keyboard Shortcuts
 
-The extension works by:
-- Injecting CSS styles to modify YouTube's grid layout
-- Using a MutationObserver to handle dynamic content loading
-- Storing your preferences in Chrome's sync storage
-- Applying responsive design principles for different screen sizes
+- **Arrow Keys** or **+/-**: Increase/decrease columns
+- **Number Keys (1-9)**: Set specific column count directly
+- **Enter/Space**: Apply changes
 
-## File Structure
+## 🛠️ Technical Details
+
+- **Manifest V3** compatible
+- Uses `chrome.storage.local` for settings persistence
+- Modifies YouTube's `--ytd-rich-grid-items-per-row` CSS property
+- Content script with MutationObserver for dynamic page changes
+- Works on `https://www.youtube.com/*` pages
+
+## 📁 File Structure
 
 ```
 youtube-column-resizer/
-├── manifest.json          # Extension configuration
-├── content.js            # Main content script
-├── styles.css            # CSS for grid layout modifications
-├── popup.html            # Extension popup interface
-├── popup.js              # Popup functionality
-├── icon16.png            # 16x16 extension icon
-├── icon48.png            # 48x48 extension icon
-├── icon128.png           # 128x128 extension icon
-└── README.md             # This file
+├── manifest.json           # Extension configuration
+├── background.js          # Service worker
+├── popup/
+│   ├── popup.html         # Extension popup interface
+│   └── popup.js           # Popup functionality
+└── content/
+    └── contentScript.js   # YouTube page modification
 ```
 
-## Browser Compatibility
+## 🎨 UI Features
 
-- Chrome (Manifest V3)
-- Edge (Chromium-based)
-- Other Chromium-based browsers
+- Gradient background with floating animation
+- Smooth button press effects and scaling animations
+- Visual feedback for button states (disabled/active)
+- Success/error states with color changes
+- Responsive design with glassmorphism effects
 
-## Permissions
+## 📝 License
 
-- `storage`: To save your column preferences
-- `activeTab`: To modify YouTube pages
-- `https://www.youtube.com/*`: To inject scripts on YouTube
+MIT License - Feel free to modify and distribute.
 
-## Troubleshooting
+---
 
-**Extension not working?**
-- Make sure you're on a YouTube page with video grids
-- Try refreshing the page after applying settings
-- Check that the extension is enabled in `chrome://extensions/`
-
-**Settings not persisting?**
-- Ensure Chrome sync is enabled
-- Check that you have sufficient storage quota
-
-**Layout looks broken?**
-- Try reducing the number of columns
-- Some YouTube layouts may not be fully compatible
-
-## Development
-
-To modify the extension:
-
-1. Make changes to the source files
-2. Go to `chrome://extensions/`
-3. Click the refresh icon on the extension card
-4. Test your changes on YouTube
-
-## License
-
-MIT License - feel free to modify and distribute.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues and pull requests.
+*Made with ❤️ for a better YouTube viewing experience*
